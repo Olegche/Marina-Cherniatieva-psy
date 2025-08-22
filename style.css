@@ -24,7 +24,7 @@ body {
 .hero {
     position: relative;
     height: 100vh;
-    background: url('заставка.png') center/cover fixed no-repeat;
+    background: url('hero.png') center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,6 +39,12 @@ body {
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
 }
+@media (min-width: 1024px){
+  .hero { background-attachment: fixed; }
+}
+
+/* і бажано використовувати 100svh для iOS */
+.hero { height: 100svh; }
 
 .hero-content {
     position: relative;
