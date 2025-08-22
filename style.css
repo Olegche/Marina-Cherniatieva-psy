@@ -1,0 +1,505 @@
+:root {
+    --mint: #29c2a5;
+    --mint-soft: #e8fbf6;
+    --text: #0e1014;
+    --bg: #fdfdfd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('заставка.png') center/cover fixed no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+.profile-pic {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.85);
+    margin-bottom: 20px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.hero h1 {
+    font-size: clamp(28px, 6vw, 48px);
+    margin-bottom: 10px;
+}
+
+.hero .subtitle {
+    font-size: clamp(16px, 3vw, 20px);
+    margin-bottom: 16px;
+    opacity: .9;
+}
+
+.hero .about-short {
+    font-size: clamp(14px, 2.5vw, 18px);
+    margin-bottom: 22px;
+    opacity: .9;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--mint);
+    color: #00332a;
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(41, 194, 165, .3);
+    transition: transform .2s;
+}
+
+.btn:hover {
+    transform: scale(1.05)
+}
+
+/* Блок з альтернативними кнопками */
+.alt-btns {
+    display: none;
+    gap: 12px;
+    margin-top: 14px;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(min-width:768px) {
+    .alt-btns {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* Ефект плавної появи кнопок */
+.fade {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+/* виділення номера телефону в секції про мене*/
+.tel-number {
+    display: inline-block;
+    padding: 14px 28px;
+    color: var(--mint);
+    font-weight: 700;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .2s;
+}
+
+.tel-number:hover {
+    transform: scale(1.05)
+}
+
+/* About box card */
+.about-box {
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    padding: 22px clamp(18px, 4vw, 28px);
+    background: var(--mint-soft);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    /* ніжна м’ятна рамка */
+    box-shadow:
+        0 10px 24px rgba(17, 24, 39, .06),
+        /* м’яка тінь */
+        0 1px 0 rgba(41, 194, 165, .06) inset;
+    /* легкий внутрішній штрих */
+}
+
+/* трохи підсилюємо типографіку всередині */
+.about-box .lead {
+    margin: 0;
+    color: #425466;
+    /* гарна читабельність */
+}
+
+/* легкий ховер (на desktop) */
+@media (hover:hover) {
+    .about-box:hover {
+        box-shadow:
+            0 14px 36px rgba(17, 24, 39, .09),
+            0 1px 0 rgba(41, 194, 165, .08) inset;
+        transform: translateY(-1px);
+        transition: box-shadow .25s ease, transform .25s ease;
+    }
+}
+
+
+/* Sections */
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+section h2 {
+    font-size: clamp(22px, 5vw, 32px);
+    margin-bottom: 10px;
+}
+
+section p.lead {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+/* Services */
+.services {
+    display: grid;
+    gap: 20px;
+}
+
+@media(min-width:768px) {
+    .services {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+    transition: transform .2s;
+}
+
+.card:hover {
+    transform: translateY(-5px)
+}
+
+.card h3 {
+    margin-bottom: 8px;
+    color: var(--mint)
+}
+
+/* Work card */
+.work-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+    margin: 0 auto;
+    max-width: 700px;
+    /* робимо вужчим */
+    text-align: center;
+}
+
+/* Work directions list */
+.work-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+}
+
+.work-list li {
+    position: relative;
+    padding-left: 32px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #425466;
+    margin-bottom: 8px;
+}
+
+/* квадратний маркер */
+.work-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    background: var(--mint);
+    box-shadow: 0 0 0 2px rgba(41, 194, 165, .18);
+}
+
+
+
+
+/* робимо плавну появу при reveal */
+.reveal.visible .work-list li {
+    transition: all .4s ease;
+}
+
+/* Terms section <!-- Умови співпраці --> */
+/* Terms section */
+#terms {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+#terms h2 {
+    font-size: clamp(22px, 5vw, 32px);
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+/* Box like work-card */
+.terms-box {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+    margin: 0 auto;
+    max-width: 700px;
+    text-align: center;
+}
+
+/* List like work-list */
+.terms-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    /* центруємо */
+    text-align: left;
+    /* текст ліворуч, але блок по центру */
+}
+
+.terms-list li {
+    position: relative;
+    padding-left: 32px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #425466;
+    margin-bottom: 10px;
+}
+
+/* Маркер як у work-list */
+.terms-list li::before {
+    content: "✔";
+    /* галочка */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--mint);
+    font-weight: bold;
+}
+
+
+/* Hover effect like other cards */
+@media (hover: hover) {
+    .terms-box:hover {
+        box-shadow:
+            0 14px 36px rgba(17, 24, 39, 0.09),
+            0 1px 0 rgba(41, 194, 165, 0.08) inset;
+        transform: translateY(-2px);
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+}
+
+/* Preparation section */
+#preparation {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+#preparation h2 {
+    font-size: clamp(22px, 5vw, 32px);
+    margin-bottom: 20px;
+    color: var(--text);
+}
+
+/* Карта з акцентом */
+.prep-box {
+    background: var(--mint-soft);
+    border-radius: 18px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .05);
+    text-align: center;
+}
+
+.prep-intro {
+    margin-bottom: 20px;
+    color: #425466;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Список по центру, текст зліва (як у work-list) */
+.prep-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: left;
+}
+
+.prep-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #425466;
+    max-width: 720px;
+}
+
+/* SVG-іконки у стилі сайту */
+.prep-icon {
+    width: 22px;
+    height: 22px;
+    color: var(--mint);
+    flex-shrink: 0;
+}
+
+.prep-icon * {
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Невеликий hover-ефект для карти */
+@media (hover:hover) {
+    .prep-box:hover {
+        box-shadow:
+            0 14px 36px rgba(17, 24, 39, .09),
+            0 1px 0 rgba(41, 194, 165, .08) inset;
+        transform: translateY(-2px);
+        transition: box-shadow .25s ease, transform .25s ease;
+    }
+}
+
+
+
+
+/* Contacts */
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: var(--mint-soft);
+    border-radius: 999px;
+    color: #065f54;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s;
+}
+
+.contact-link:hover {
+    background: var(--mint);
+    color: white
+}
+
+/* Desktop: контакти в один ряд, без розтягування кнопок */
+@media (min-width: 768px) {
+    #contact .contacts {
+        display: flex !important;
+        /* перекриваємо можливий grid */
+        flex-direction: row !important;
+        /* з колонки у ряд */
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        /* якщо не влазить — переносить акуратно */
+        width: 100%;
+    }
+
+    #contact .contact-link {
+        display: inline-flex;
+        /* природна ширина */
+        width: auto;
+        /* не розтягуємо */
+        flex: 0 0 auto;
+        /* не тягнеться */
+        /* прибери будь-який min-width, якщо десь додавали */
+        min-width: unset;
+        justify-content: center;
+    }
+}
+
+.contact-link svg.icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    /* бере колір тексту кнопки */
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .8s ease
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0)
+}
