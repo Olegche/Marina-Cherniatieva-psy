@@ -209,7 +209,7 @@ section p.lead {
     background: white;
     border-radius: 16px;
     padding: 24px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.092);
     transition: transform .2s;
 }
 
@@ -294,7 +294,7 @@ section p.lead {
     background: #fff;
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, .06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.171);
     margin: 0 auto;
     max-width: 700px;
     text-align: center;
@@ -508,4 +508,51 @@ footer {
 .reveal.visible {
     opacity: 1;
     transform: translateY(0)
+}
+/* Мініатюри */
+.cert-thumb {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform .2s;
+}
+.cert-thumb:hover {
+  transform: scale(1.03);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;              /* ховаємо за замовчуванням */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.9);
+}
+.lightbox-content {
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: var(--mint);
+ 
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close:hover {
+  color: #fff;
 }

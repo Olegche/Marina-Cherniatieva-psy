@@ -86,6 +86,12 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css" />
+  <!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Підключення script.js -->
+<script src="script.js"></script>
+
 </head>
 
 
@@ -257,6 +263,57 @@
       </ul>
     </div>
   </section>
+<!-- Сертифікати -->
+<section id="certificates" class="reveal">
+  <h2>Сертифікати</h2>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="/cert/cert1.jpg" alt="Сертифікат 1" class="cert-thumb">
+      </div>
+      <div class="swiper-slide">
+        <img src="/cert/cert2.JPG" alt="Сертифікат 2" class="cert-thumb">
+      </div>
+      <div class="swiper-slide">
+        <img src="/cert/cert3.JPG" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+        <div class="swiper-slide">
+        <img src="cert/cert4.JPG" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+        <div class="swiper-slide">
+        <img src="cert/cert5.JPG" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+       <div class="swiper-slide">
+        <img src="cert/cert6.jpg" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+       <div class="swiper-slide">
+        <img src="cert/cert7.jpg" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+       <div class="swiper-slide">
+        <img src="cert/cert8.jpg" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+       <div class="swiper-slide">
+        <img src="cert/cert9.jpg" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+       <div class="swiper-slide">
+        <img src="cert/cert11.JPG" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+       <div class="swiper-slide">
+        <img src="cert/cert11.JPG" alt="Сертифікат 3" class="cert-thumb">
+      </div>
+      <!-- додай інші -->
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- Модальне вікно для сертифіката -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="">
+</div>
 
 
 
@@ -291,39 +348,7 @@
     © <span id="y"></span> Марина Чернят’єва · Психолог
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      })
-    }, { threshold: .2 });
-    reveals.forEach(el => observer.observe(el));
-
-    // переключення кнопок
-    const mainBtn = document.getElementById('main-btn');
-    const altBtns = document.getElementById('alt-buttons');
-    const fadeBtns = altBtns.querySelectorAll('.fade');
-
-    mainBtn.addEventListener('click', e => {
-      e.preventDefault();
-      mainBtn.style.display = 'none';
-      altBtns.style.display = 'flex';
-      // поетапне вмикання анімації
-      fadeBtns.forEach((btn, i) => {
-        setTimeout(() => btn.classList.add('show'), i * 950);
-      });
-    });
-
-
-  </script>
 
 </body>
 
