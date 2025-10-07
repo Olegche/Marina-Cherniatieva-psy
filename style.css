@@ -1,56 +1,60 @@
 :root {
-    --mint: #29c2a5;
-    --mint-soft: #e8fbf6;
-    --text: #0e1014;
-    --bg: #fdfdfd;
+  --mint: #29c2a5;
+  --mint-soft: #e8fbf6;
+  --text: #0e1014;
+  --bg: #fdfdfd;
+  --hero-bg: url("hero.png"); /* світла тема */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0
+ html.theme-dark {
+  --hero-bg: url("herodark.png"); /* темна тема */
 }
+ 
+ 
+
+ 
+
+
 
 body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }
-
 
 /* HERO */
 .hero {
-    position: relative;
-    height: 100vh;
-    background: url('hero.png') center / cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    padding: 20px;
+  position: relative;
+  height: 100svh;  /* краще для мобільних ніж vh */
+  background-image: var(--hero-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
 }
 
 .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
 }
-@media (min-width: 1024px){
-  .hero { background-attachment: fixed; }
-}
-
-/* і бажано використовувати 100svh для iOS */
-.hero { height: 100svh; }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
 }
+
 
 .profile-pic {
     width: 190px;
@@ -232,6 +236,7 @@ section p.lead {
     max-width: 700px;
     /* робимо вужчим */
     text-align: center;
+    
 }
 
 /* Work directions list */
@@ -368,6 +373,7 @@ section p.lead {
     margin: 0 auto;
     box-shadow: 0 8px 24px rgba(0, 0, 0, .05);
     text-align: center;
+    
 }
 
 .prep-intro {
@@ -556,3 +562,201 @@ footer {
 .close:hover {
   color: #fff;
 }
+
+
+
+/* ===== NAVBAR (додано) ===== */
+.navbar{
+  position: fixed; top:0; left:0; right:0; height:60px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 16px; z-index:9998;
+  color:#fff; background: rgba(0,0,0,0.35); backdrop-filter: saturate(120%) blur(6px);
+}
+.nav-brand{ color:#fff; text-decoration:none; font-weight:700; letter-spacing:.2px; }
+.burger{ width:40px; height:40px; border:0; background:transparent; cursor:pointer; display:grid; place-content:center; gap:5px; }
+.burger span{ display:block; width:22px; height:2px; background:#fff; transition: transform .2s, opacity .2s; }
+.burger[aria-expanded="true"] span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.burger[aria-expanded="true"] span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile dropdown */
+.nav-links{
+  list-style:none; margin:0; padding:12px 16px;
+  position: fixed; top:60px; left:0; right:0;
+  display:none; flex-direction:column; gap:12px;
+  background: var(--bg); color: var(--text);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
+}
+.nav-links.open{ display:flex; }
+.nav-links a{ color:inherit; text-decoration:none; font-weight:600; padding:10px 12px; }
+.nav-links .nav-cta{ align-self:center; }
+
+/* Backdrop behind mobile menu */
+.nav-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:9997; }
+
+/* Desktop layout */
+@media (min-width: 992px){
+  .burger{ display:none; }
+  .nav-links{
+    position: static; display:flex !important; flex-direction:row; gap:20px;
+    background: transparent; box-shadow:none; padding:0;
+  }
+  .nav-links a{ color:#fff; }
+}
+
+/* Offset for fixed header on in-page anchors */
+section{ scroll-margin-top: 80px; }
+
+/* Корисне для аватарки (якщо центр "з’їжджає") */
+.profile-pic{ display:block; margin:0 auto 20px; }
+
+
+/* Темні змінні */
+html.theme-dark{
+  --bg:#0d1014;
+  --text:#e6e8eb;
+  --mint-soft:#12332c;
+}
+
+html.theme-dark #terms .terms-box,
+html.theme-dark #terms h2,
+html.theme-dark #terms .terms-list li,
+html.theme-dark #preparation .prep-box,
+html.theme-dark #preparation h2,
+html.theme-dark #preparation .prep-intro,
+html.theme-dark #preparation .prep-list li,
+html.theme-dark #approaches h2,
+html.theme-dark #approaches .work-card,
+html.theme-dark #approaches .work-list li {
+  color: #ffffff;
+}
+
+
+/* (опційно) підсилити контраст списків */
+html.theme-dark #terms .terms-list li::before { color: var(--mint); }
+html.theme-dark #preparation .prep-icon * { stroke: currentColor; } /* і так є, лиш для ясності */
+
+
+/* Оверрайди для блоків з білим фоном */
+html.theme-dark .card,
+html.theme-dark .work-card,
+html.theme-dark .terms-box{
+  background:#14181f;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+html.theme-dark section p.lead{ color:#e7ecf0; }
+html.theme-dark .contact-link{ background:var(--mint-soft); color:#a7fff1; }
+html.theme-dark .nav-links{ background:var(--bg); color:var(--text); }
+html.theme-dark footer{ color:#fafdff; }
+
+/* Кнопка перемикача (плаваюча) */
+.theme-toggle.floating{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10050;               /* вище navbar/backdrop */
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(231, 207, 27, 0.499);
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  display: none;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ПОКАЗАТИ НА ДЕСКТОПІ (перебиває старі правила з !important) */
+@media (min-width: 992px){
+  html body .theme-toggle.floating{
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+}
+.theme-toggle .icon-sun{ display:none; }
+html.theme-dark .theme-toggle .icon-sun{ display:inline; }
+html.theme-dark .theme-toggle .icon-moon{ display:none; }
+
+
+/* Група справа в navbar */
+.nav-actions{ display:flex; align-items:center; gap:8px; }
+
+/* Тумблер теми поруч із бургером (видно на мобільних) */
+.theme-toggle.navbtn{
+  width:40px; height:40px; padding:0;
+  display:grid; place-items:center;
+  border-radius:999px; border:1px solid rgba(255,255,255,.35);
+  background:transparent; color:#fff; cursor:pointer;
+}
+.theme-toggle.navbtn .icon-sun{ display:none; }      /* світла іконка для darк */
+html.theme-dark .theme-toggle.navbtn .icon-sun{ display:inline; }
+html.theme-dark .theme-toggle.navbtn .icon-moon{ display:none; }
+
+/* Ховаємо тумблер у navbar на десктопі */
+@media (min-width:992px){
+  .theme-toggle.navbtn{ display:none; }
+}
+
+/* (необов’язково) якщо раніше додавали плаваючу кнопку — сховай її */
+.theme-toggle.floating{ display:none !important; }
+
+/* Плавна зміна теми — анімуємо тільки під час перемикання */
+body.theme-transition,
+body.theme-transition .about-box,
+body.theme-transition .work-card,
+body.theme-transition .card,
+body.theme-transition .contact-link,
+body.theme-transition footer,
+body.theme-transition .hero::after {
+  transition:
+    background-color .35s ease,
+    color .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease,
+    filter .35s ease;
+}
+
+/* повага до зменшеної анімації */
+@media (prefers-reduced-motion: reduce){
+  body.theme-transition,
+  body.theme-transition *{
+    transition: none !important;
+  }
+}
+/* Загальна анімація reveal для всіх карток */
+.about-box.reveal,
+.work-card.reveal,
+.reveal,
+.card.reveal,
+.swiper-slide.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s ease;
+}
+
+.about-box.reveal.visible,
+.work-card.reveal.visible,
+.card.reveal.visible,
+.swiper-slide.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* утиліта плавної зміни кольорів/фону/рамок */
+.smooth {
+  transition:
+    background-color 1s ease,
+    color .42s ease,
+    border-color .42s ease,
+    box-shadow .42s ease,
+    fill .42s ease,
+    stroke .42s ease,
+    filter .42s ease;
+}
+
+/* щоби ще м’якше під час перемикача */
+
+
+
