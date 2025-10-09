@@ -1,6 +1,6 @@
 // === Contact Conversion Tracking (GA4) ===
 (function attachContactTracking(){
-  const MEASUREMENT_ID = 'G-8K9T7ZQEP6'; // щоб явно вказати send_to
+  const MEASUREMENT_ID = 'G-B3JKC8WZQB'; // щоб явно вказати send_to
 
   // іноді буває, що tracking.js підключили до завантаження gtag()
   function gtagSafe(){
