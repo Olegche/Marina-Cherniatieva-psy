@@ -25,14 +25,16 @@ body {
 }
 
 /* HERO */
-.hero {
-  position: relative;
-  height: 100svh;  /* краще для мобільних ніж vh */
-  background-image: var(--hero-bg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 
+ /* HERO */
+.hero{
+  position: relative;
+  /* висота для мобільних */
+  min-height: 100dvh;
+  height: 100svh;
+
+  /* важливо: фон переносимо на ::before, тому тут без background */
+  overflow: hidden; /* або overflow: clip; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,19 +43,38 @@ body {
   padding: 20px;
 }
 
-.hero::after {
+/* фонове зображення зі “bleed” — виступ за краї на 2–3% */
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: -3% -2%;          /* трохи більше за контейнер, щоб не було смужок */
+  background-image: var(--hero-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+  will-change: transform;  /* дрібна оптимізація проти артефактів */
+}
+
+/* затемнення зверху — як було */
+.hero::after{
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
 }
 
-.hero-content {
+.hero-content{
   position: relative;
-  z-index: 2;
-  max-width: 700px;
+  z-index: 2; /* поверх затемнення */
 }
+
+/* Паралакс тільки на десктопі — на мобільному НЕ fixed */
+@media (min-width: 1024px){
+  .hero::before{ background-attachment: fixed; }
+}
+
 
 
 .profile-pic {
