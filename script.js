@@ -175,6 +175,19 @@
         }
       });
     }
+
+    // 7) FAQ accordion: only one open at a time
+    const faqItems = document.querySelectorAll('#faq .faq-item');
+    if (faqItems.length) {
+      faqItems.forEach((item) => {
+        item.addEventListener('toggle', () => {
+          if (!item.open) return;
+          faqItems.forEach((other) => {
+            if (other !== item) other.open = false;
+          });
+        });
+      });
+    }
   });
 })();
 
@@ -263,4 +276,3 @@ media.addEventListener?.('change', e => {
 });
 
 initTheme();
-

@@ -4,13 +4,52 @@
   <!-- Головна сторінка -->
   <url>
     <loc>https://www.cherniatieva.com.ua/</loc>
-    <lastmod>2025-08-23</lastmod>
+    <lastmod>2026-02-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
       <image:title>Психолог Марина Чернят’єва</image:title>
       <image:caption>Професійний психолог в Ужгороді — консультації онлайн та офлайн</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Сторінка сімейних консультацій -->
+  <url>
+    <loc>https://www.cherniatieva.com.ua/family.html</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Сімейні / парні консультації — Марина Чернят’єва</image:title>
+      <image:caption>Підтримка у взаєминах, кризах і відновленні довіри</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Сторінка індивідуального психолога -->
+  <url>
+    <loc>https://www.cherniatieva.com.ua/individual.html</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Індивідуальний психолог — Марина Чернят’єва</image:title>
+      <image:caption>Підтримка у стресі, тривозі й складних життєвих ситуаціях</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Сторінка тренінгів та лекцій -->
+  <url>
+    <loc>https://www.cherniatieva.com.ua/trainings.html</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Психологічні тренінги та лекції — Марина Чернят’єва</image:title>
+      <image:caption>Тренінги й лекції для команд і груп в Ужгороді та онлайн</image:caption>
     </image:image>
   </url>
 

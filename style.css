@@ -199,6 +199,15 @@ body {
     }
 }
 
+@media (hover:hover) {
+    .about-box.no-hover:hover {
+        box-shadow:
+            0 10px 24px rgba(17, 24, 39, .06),
+            0 1px 0 rgba(41, 194, 165, .06) inset;
+        transform: none;
+    }
+}
+
 
 /* Sections */
 section {
@@ -245,6 +254,63 @@ section p.lead {
 .card h3 {
     margin-bottom: 8px;
     color: var(--mint)
+}
+
+.service-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+    transition: transform .12s ease;
+}
+
+@media (hover: hover) {
+    .service-card:hover {
+        background: #14181f;
+        color: #e6e8eb;
+        transform: translateY(-6px);
+    }
+}
+
+@media (hover: hover) {
+    html.theme-dark .service-card:hover {
+        background: #ffffff;
+        color: #0e1014;
+        transform: translateY(-6px);
+    }
+}
+
+@media (hover: hover) {
+    .service-card::after {
+        content: "";
+        display: block;
+        margin-top: 12px;
+        font-weight: 800;
+        font-size: 14px;
+        color: currentColor;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .service-card:hover::after {
+        content: "Детальніше...";
+        opacity: 1;
+        max-height: 40px;
+    }
+}
+
+@media (hover: none) {
+    .service-card::after {
+        content: "Детальніше...";
+        display: block;
+        margin-top: 12px;
+        font-weight: 800;
+        font-size: 14px;
+        color: currentColor;
+        opacity: 0.9;
+        max-height: none;
+    }
 }
 
 /* Work card */
@@ -440,6 +506,86 @@ section p.lead {
     stroke-linejoin: round;
 }
 
+/* FAQ */
+.faq-box {
+    background: var(--mint-soft);
+    border-radius: 18px;
+    padding: 18px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .05);
+    text-align: left;
+}
+
+.faq-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .06);
+}
+
+.faq-item + .faq-item {
+    margin-top: 14px;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--text);
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    float: right;
+    color: var(--mint);
+    font-weight: 700;
+}
+
+.faq-item[open] summary::after {
+    content: "–";
+}
+
+html.theme-dark .faq-box {
+    background: #0f141a;
+}
+
+html.theme-dark .faq-item {
+    background: #14181f;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+}
+
+html.theme-dark .faq-item summary,
+html.theme-dark .faq-subtitle {
+    color: #ffffff;
+}
+
+html.theme-dark .faq-body {
+    color: #e1f4ef;
+}
+
+html.theme-dark #faq .work-list li,
+html.theme-dark #faq .terms-list li,
+html.theme-dark #faq .prep-list li,
+html.theme-dark #faq .prep-intro {
+    color: #e1f4ef;
+}
+
+.faq-body {
+    margin-top: 12px;
+    color: #425466;
+}
+
+.faq-subtitle {
+    margin: 12px 0 8px;
+    font-size: 16px;
+    color: var(--text);
+}
+
 /* Невеликий hover-ефект для карти */
 @media (hover:hover) {
     .prep-box:hover {
@@ -516,6 +662,21 @@ section p.lead {
     /* бере колір тексту кнопки */
 }
 
+/* Map embed */
+.map-embed {
+    margin-top: 22px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+}
+
+.map-embed iframe {
+    width: 100%;
+    height: min(40vh, 260px);
+    border: 0;
+    display: block;
+}
+
 
 /* Footer */
 footer {
@@ -535,6 +696,13 @@ footer {
 .reveal.visible {
     opacity: 1;
     transform: translateY(0)
+}
+
+/* Avoid GPU rasterization blur for hero content */
+.hero .reveal,
+.hero .reveal.visible {
+    transform: none;
+    opacity: 1;
 }
 /* Мініатюри */
 .cert-thumb {
@@ -605,7 +773,7 @@ footer {
   list-style:none; margin:0; padding:12px 16px;
   position: fixed; top:60px; left:0; right:0;
   display:none; flex-direction:column; gap:12px;
-  background: var(--bg); color: var(--text);
+  background: rgba(0,0,0,0.35); color: #fff;
   box-shadow: 0 8px 24px rgba(0,0,0,.18);
   border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
 }
@@ -643,6 +811,15 @@ html.theme-dark{
 html.theme-dark #terms .terms-box,
 html.theme-dark #terms h2,
 html.theme-dark #terms .terms-list li,
+html.theme-dark #format h2,
+html.theme-dark #format .work-card,
+html.theme-dark #format .work-list li,
+html.theme-dark #outcome h2,
+html.theme-dark #outcome .terms-box,
+html.theme-dark #outcome .terms-list li,
+html.theme-dark #faq h2,
+html.theme-dark #faq .faq-item summary,
+html.theme-dark #faq .faq-body,
 html.theme-dark #preparation .prep-box,
 html.theme-dark #preparation h2,
 html.theme-dark #preparation .prep-intro,
@@ -668,7 +845,6 @@ html.theme-dark .terms-box{
 }
 html.theme-dark section p.lead{ color:#e7ecf0; }
 html.theme-dark .contact-link{ background:var(--mint-soft); color:#a7fff1; }
-html.theme-dark .nav-links{ background:var(--bg); color:var(--text); }
 html.theme-dark footer{ color:#fafdff; }
 
 /* Кнопка перемикача (плаваюча) */
@@ -778,6 +954,3 @@ body.theme-transition .hero::after {
 }
 
 /* щоби ще м’якше під час перемикача */
-
-
-
