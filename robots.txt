@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.cherniatieva.com.ua/sitemap.xml
+LLMs: https://www.cherniatieva.com.ua/llms.txt
