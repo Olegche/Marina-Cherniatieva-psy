@@ -1,0 +1,30 @@
+name: Update sitemap lastmod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Update lastmod in sitemap.xml
+        run: |
+          python3 .github/scripts/update_lastmod.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet sitemap.xml || (git add sitemap.xml && git commit -m "chore: auto-update sitemap lastmod [skip ci]" && git push)
