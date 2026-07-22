@@ -4,6 +4,7 @@
   <!-- Головна сторінка -->
   <url>
     <loc>https://www.cherniatieva.com.ua/</loc>
+    <lastmod>2026-02-05</lastmod>
    
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -17,7 +18,7 @@
   <!-- Сторінка сімейних консультацій -->
   <url>
     <loc>https://www.cherniatieva.com.ua/family.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -30,7 +31,7 @@
   <!-- Сторінка індивідуального психолога -->
   <url>
     <loc>https://www.cherniatieva.com.ua/individual.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -43,7 +44,7 @@
   <!-- Сторінка тренінгів та лекцій -->
   <url>
     <loc>https://www.cherniatieva.com.ua/trainings.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
