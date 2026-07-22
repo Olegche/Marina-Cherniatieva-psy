@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-
+Allow: /llms.txt
 Sitemap: https://www.cherniatieva.com.ua/sitemap.xml
-LLMs: https://www.cherniatieva.com.ua/llms.txt
+
