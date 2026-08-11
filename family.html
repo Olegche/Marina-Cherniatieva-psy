@@ -35,14 +35,31 @@
   <meta name="twitter:image" content="https://www.cherniatieva.com.ua/profile-2025.jpg?v=1" />
 
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-    as="style" />
+  <!-- Тема застосовується до першого рендеру + преload фону героя -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('theme-dark');
+        var sm = matchMedia('(max-width: 800px)').matches;
+        var l = document.createElement('link');
+        l.rel = 'preload'; l.as = 'image';
+        l.href = '/herofamily' + (sm ? '-sm' : '') + '.jpg';
+        l.fetchPriority = 'high';
+        document.head.appendChild(l);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css" />
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="/style.css?v=4" />
+  <script src="script.js?v=4" defer></script>
 </head>
 
-<body style="--hero-bg: url('herofamily.png');">
+<body class="page-family">
   <!-- NAVBAR -->
   <nav class="navbar" aria-label="Головна навігація">
     <a href="/" class="nav-brand">Марина Чернят’єва</a>
@@ -93,7 +110,7 @@
 
 Як сімейний психолог в Ужгороді та онлайн, я допомагаю парам пройти складні етапи та знайти нові способи взаємодії, які працюють саме для вашої сім’ї..</p>
       <p class="lead">Мета сімейних консультацій підтримати безпечний контакт між партнерами, допомогти почути одне одного й
-        сформувати нові способи взаємодії, які працюють саме  для вашої пари.</p>
+        сформувати нові способи взаємодії, які працюють саме для вашої пари.</p>
     </div>
   </section>
 
@@ -148,7 +165,7 @@
       </a>
       <a class="card reveal service-card" href="trainings.html">
         <h3>Психологічні тренінги та лекції</h3>
-        <p>Групові формати для команд і спільнот: комунікація, стрес‑менеджмент, запобігання вигорання</p>
+        <p>Групові формати для команд і спільнот: комунікація, стрес‑менеджмент.</p>
       </a>
       <a class="card reveal service-card" href="/#services">
         <h3>Всі послуги на головній</h3>

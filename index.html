@@ -58,13 +58,32 @@
     type="application/ld+json">{ "@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Які методи роботи ви використовуєте?","acceptedAnswer":{"@type":"Answer","text":"Працюю в інтегративному підході та використовую когнітивно-поведінкову терапію (КПТ). Напрямки: індивідуальна та парна/сімейна терапія, дитячо-батьківські стосунки, психосоматика, психодіагностика, кризове консультування, ЛГБТ."}},{"@type":"Question","name":"Які умови співпраці?","acceptedAnswer":{"@type":"Answer","text":"Індивідуальні сесії — 50 хв, парні — 75–90 хв. Бронювання після повної оплати (не пізніше ніж за 24 год. до зустрічі). Онлайн консультація у зручному месенджері. Перенесення/скасування — не пізніше ніж за 24 години."}},{"@type":"Question","name":"Як підготуватися до першої зустрічі?","acceptedAnswer":{"@type":"Answer","text":"Перша сесія — знайомство. Подбайте про тишу й приватність, підготуйте навушники та інтернет (для онлайн). Подумайте про запит, залиште кілька хвилин тиші перед зустріччю, будьте відкритими — немає «правильних» слів."}},{"@type":"Question","name":"Це конфіденційно?","acceptedAnswer":{"@type":"Answer","text":"Конфіденційність - це не красива обіцянка і не маркетинговий хід. Це базовий етичний принцип і закон у роботі психолога. Ми , психологи працюємо із дуже різними людьми: з різним життєвим досвідом, посадами, статусом, публічністю. І незалежно від цього, єдина абсолютна цінність у роботі - безпека клієнта та збереження його особистої інформації. Я чітко і без компромісів дотримуюся принципів конфіденційності у своїй практиці. Тільки так. І ніяк інакше. Часто люди роками не наважуються звернутися за підтримкою - особливо коли йдеться про стосунки, мобінг, булінг, емоційне насильство чи складні внутрішні переживання. Іноді страх, що особиста інформація може вийти за межі кабінету психолога, змушує залишатися з труднощами наодинці. Хочу запевнити вас: усе, що відбувається в кабінеті психолога, залишається в кабінеті психолога. Конфіденційність - це не спосіб заспокоїти клієнта, а обов’язкове правило нашої професії. Це не маркетинговий хід, а закон професії. У терапії ви маєте право на безпеку, повагу, тишу й довіру. Саме в такому просторі можливі справжні зміни та відновлення."}},{"@type":"Question","name":"В яких програмах проходить онлайн?","acceptedAnswer":{"@type":"Answer","text":"У будь-якому зручному месенджері: Telegram, Google Meet, Viber, WhatsApp, Zoom та інших."}}] }</script>
 
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-    as="style" />
+
+  <!-- Тема застосовується до першого рендеру + преload потрібного фону героя -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('theme-dark');
+        var sm = matchMedia('(max-width: 800px)').matches;
+        var l = document.createElement('link');
+        l.rel = 'preload'; l.as = 'image';
+        l.href = '/' + (dark ? 'herodark' : 'hero') + (sm ? '-sm' : '') + '.jpg';
+        l.fetchPriority = 'high';
+        document.head.appendChild(l);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=4" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="script.js?v=4" defer></script>
 </head>
 
 <body>
@@ -98,7 +117,8 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-content reveal">
-      <img src="profile-2025.jpg?v=1" alt="Психолог в Ужгороді — Марина Чернят’єва" class="profile-pic">
+      <img src="profile-2025-sm.jpg" alt="Психолог в Ужгороді — Марина Чернят’єва" class="profile-pic" width="190"
+        height="190" fetchpriority="high" decoding="async">
       <h1>Психолог Марина Чернят’єва</h1>
       <p class="subtitle">Психолог в Ужгороді · онлайн та офлайн</p>
 
@@ -279,18 +299,18 @@
     <h2>Сертифікати</h2>
     <div class="swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="/cert/cert1.jpg" alt="Диплом магістра психології Марина Чернятʼєва" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/cert2.JPG" alt="Сертифікат клінічного психолога в Україні" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/cert3.JPG" alt="Сертифікат психолога  в Україні" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert4.JPG" alt="Сертифікат психолога першої клінічної допомоги" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert5.JPG" alt="Сертифікат сімейного психолога" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert6.jpg" alt="Сімейний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert7.jpg" alt="Сексолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert8.jpg" alt="Психосоматика — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert9.jpg" alt="Практичний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert10.JPG" alt="Сертифікат Когнітивно-поведінкова терапія" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert11.JPG" alt="Сертифікат психолога в Ужгороді" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="cert/cert12.JPG" alt="Сертифікат пропадевтика психічних розладів" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert1.jpg" data-large="/cert/cert1.jpg" alt="Диплом магістра психології Марина Чернятʼєва" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert2.jpg" data-large="/cert/cert2.JPG" alt="Сертифікат клінічного психолога в Україні" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert3.jpg" data-large="/cert/cert3.JPG" alt="Сертифікат психолога  в Україні" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert4.jpg" data-large="/cert/cert4.JPG" alt="Сертифікат психолога першої клінічної допомоги" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert5.jpg" data-large="/cert/cert5.JPG" alt="Сертифікат сімейного психолога" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert6.jpg" data-large="/cert/cert6.jpg" alt="Сімейний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert7.jpg" data-large="/cert/cert7.jpg" alt="Сексолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert8.jpg" data-large="/cert/cert8.jpg" alt="Психосоматика — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert9.jpg" data-large="/cert/cert9.jpg" alt="Практичний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert10.jpg" data-large="/cert/cert10.JPG" alt="Сертифікат Когнітивно-поведінкова терапія" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert11.jpg" data-large="/cert/cert11.JPG" alt="Сертифікат психолога в Ужгороді" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><img src="/cert/thumbs/cert12.jpg" data-large="/cert/cert12.JPG" alt="Сертифікат пропадевтика психічних розладів" class="cert-thumb" loading="lazy" decoding="async"></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>

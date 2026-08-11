@@ -3,11 +3,25 @@
   --mint-soft: #e8fbf6;
   --text: #0e1014;
   --bg: #fdfdfd;
-  --hero-bg: url("hero.png"); /* світла тема */
+  --hero-bg: url("hero.jpg"); /* світла тема */
 }
 
  html.theme-dark {
-  --hero-bg: url("herodark.png"); /* темна тема */
+  --hero-bg: url("herodark.jpg"); /* темна тема */
+}
+
+/* Фон для внутрішніх сторінок (клас на <body>) */
+.page-individual { --hero-bg: url("individual-hero.jpg"); }
+.page-family     { --hero-bg: url("herofamily.jpg"); }
+.page-trainings  { --hero-bg: url("training.jpg"); }
+
+/* Мобільні: легші версії фонів (чому: економія трафіку на телефонах) */
+@media (max-width: 800px) {
+  :root { --hero-bg: url("hero-sm.jpg"); }
+  html.theme-dark { --hero-bg: url("herodark-sm.jpg"); }
+  .page-individual { --hero-bg: url("individual-hero-sm.jpg"); }
+  .page-family     { --hero-bg: url("herofamily-sm.jpg"); }
+  .page-trainings  { --hero-bg: url("training-sm.jpg"); }
 }
  
  
@@ -48,6 +62,7 @@ body {
   content: "";
   position: absolute;
   inset: -3% -2%;          /* трохи більше за контейнер, щоб не було смужок */
+  background-color: #2b2f33;   /* чому: щоб не блимало білим до завантаження фону */
   background-image: var(--hero-bg);
   background-position: center;
   background-size: cover;

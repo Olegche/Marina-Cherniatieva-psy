@@ -4,7 +4,6 @@
   <!-- Головна сторінка -->
   <url>
     <loc>https://www.cherniatieva.com.ua/</loc>
-    <lastmod>2026-02-05</lastmod>
    
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -18,9 +17,9 @@
   <!-- Сторінка сімейних консультацій -->
   <url>
     <loc>https://www.cherniatieva.com.ua/family.html</loc>
-    <lastmod>2026-07-22</lastmod>
+  
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
       <image:title>Сімейні / парні консультації — Марина Чернят’єва</image:title>
@@ -31,9 +30,9 @@
   <!-- Сторінка індивідуального психолога -->
   <url>
     <loc>https://www.cherniatieva.com.ua/individual.html</loc>
-    <lastmod>2026-02-05</lastmod>
+  
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
       <image:title>Індивідуальний психолог — Марина Чернят’єва</image:title>
@@ -44,9 +43,9 @@
   <!-- Сторінка тренінгів та лекцій -->
   <url>
     <loc>https://www.cherniatieva.com.ua/trainings.html</loc>
-    <lastmod>2026-07-23</lastmod>
+
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
     <image:image>
       <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
       <image:title>Психологічні тренінги та лекції — Марина Чернят’єва</image:title>
