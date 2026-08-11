@@ -31,6 +31,7 @@
 
 
 body {
+  margin: 0;               /* чому: типовий відступ браузера у 8px давав смужки фону по боках героя */
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
