@@ -14,6 +14,12 @@
 .page-individual { --hero-bg: url("individual-hero.jpg"); }
 .page-family     { --hero-bg: url("herofamily.jpg"); }
 .page-trainings  { --hero-bg: url("training.jpg"); }
+.page-teens      { --hero-bg: url("individual-hero.jpg"); }
+.page-lgbt       { --hero-bg: url("individual-hero.jpg"); }
+.page-focus      { --hero-bg: url("training.jpg"); }
+.page-teen-club  { --hero-bg: url("training.jpg"); }
+.page-psy-home   { --hero-bg: url("training.jpg"); }
+/* .page-sexology — успадковує тематичний фон головної (світла/темна тема) */
 
 /* Мобільні: легші версії фонів (чому: економія трафіку на телефонах) */
 @media (max-width: 800px) {
@@ -22,6 +28,11 @@
   .page-individual { --hero-bg: url("individual-hero-sm.jpg"); }
   .page-family     { --hero-bg: url("herofamily-sm.jpg"); }
   .page-trainings  { --hero-bg: url("training-sm.jpg"); }
+  .page-teens      { --hero-bg: url("individual-hero-sm.jpg"); }
+  .page-lgbt       { --hero-bg: url("individual-hero-sm.jpg"); }
+  .page-focus      { --hero-bg: url("training-sm.jpg"); }
+  .page-teen-club  { --hero-bg: url("training-sm.jpg"); }
+  .page-psy-home   { --hero-bg: url("training-sm.jpg"); }
 }
  
  

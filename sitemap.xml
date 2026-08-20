@@ -4,7 +4,6 @@
   <!-- Головна сторінка -->
   <url>
     <loc>https://www.cherniatieva.com.ua/</loc>
-    <lastmod>2026-08-12</lastmod>
    
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -18,7 +17,6 @@
   <!-- Сторінка сімейних консультацій -->
   <url>
     <loc>https://www.cherniatieva.com.ua/family.html</loc>
-    <lastmod>2026-08-12</lastmod>
   
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -32,7 +30,6 @@
   <!-- Сторінка індивідуального психолога -->
   <url>
     <loc>https://www.cherniatieva.com.ua/individual.html</loc>
-    <lastmod>2026-08-12</lastmod>
   
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -46,7 +43,6 @@
   <!-- Сторінка тренінгів та лекцій -->
   <url>
     <loc>https://www.cherniatieva.com.ua/trainings.html</loc>
-    <lastmod>2026-08-12</lastmod>
 
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -55,6 +51,79 @@
       <image:title>Психологічні тренінги та лекції — Марина Чернят’єва</image:title>
       <image:caption>Тренінги й лекції для команд і груп в Ужгороді та онлайн</image:caption>
        </image:image>
+  </url>
+
+
+  <url>
+    <loc>https://www.cherniatieva.com.ua/teens.html</loc>
+
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Індивідуальні консультації для підлітків — Марина Чернят’єва</image:title>
+      <image:caption>Психолог для підлітків 12–18 років в Ужгороді та онлайн</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cherniatieva.com.ua/sexology.html</loc>
+
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Консультації в сфері сексології — Марина Чернят’єва</image:title>
+      <image:caption>Сексолог в Ужгороді та онлайн: інтимна сфера, бажання, близькість у парі</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cherniatieva.com.ua/lgbt.html</loc>
+
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Психологічна підтримка LGBT людей — Марина Чернят’єва</image:title>
+      <image:caption>LGBT-friendly психолог: ідентичність, камінг-аут, стосунки, міноритарний стрес</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cherniatieva.com.ua/focus.html</loc>
+
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Профорієнтація для підлітків «Фокус» — Марина Чернят’єва</image:title>
+      <image:caption>Психодіагностика здібностей, інтереси, вибір професії та план вступу</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cherniatieva.com.ua/teen-club.html</loc>
+
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>Просвітницький психологічний клуб для підлітків — Марина Чернят’єва</image:title>
+      <image:caption>Групові зустрічі для підлітків: емоції, спілкування, самооцінка</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://www.cherniatieva.com.ua/psy-home.html</loc>
+
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.cherniatieva.com.ua/profile-2025.jpg</image:loc>
+      <image:title>«Дім психолога» — курс для психологів-початківців</image:title>
+      <image:caption>Авторський інтенсив «Від диплома — до приватної практики»</image:caption>
+    </image:image>
   </url>
 
 </urlset>
