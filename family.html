@@ -46,7 +46,8 @@
         var sm = matchMedia('(max-width: 800px)').matches;
         var l = document.createElement('link');
         l.rel = 'preload'; l.as = 'image';
-        l.href = '/herofamily' + (sm ? '-sm' : '') + '.jpg';
+        var ext = (window.CSS && CSS.supports && CSS.supports('background-image', 'image-set(url("a.webp") type("image/webp"))')) ? '.webp' : '.jpg';
+        l.href = '/herofamily' + (sm ? '-sm' : '') + ext;
         l.fetchPriority = 'high';
         document.head.appendChild(l);
       } catch (e) {}
@@ -91,7 +92,11 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-content reveal">
-      <img src="profile-2025.jpg?v=1" alt="Сімейний психолог в Ужгороді — Марина Чернят’єва" class="profile-pic">
+      <picture>
+        <source srcset="profile-2025-sm.webp" type="image/webp">
+        <img src="profile-2025-sm.jpg" alt="Сімейний психолог в Ужгороді — Марина Чернят’єва" class="profile-pic" width="190" height="190"
+          fetchpriority="high" decoding="async">
+      </picture>
       <h1>Сімейний психолог в Ужгороді</h1>
       <p class="subtitle">Марина Чернят’єва</p>
       <p class="subtitle">Парна і сімейна терапія: говорити відкрито, чути одне одного і відновлювати близькість.</p>

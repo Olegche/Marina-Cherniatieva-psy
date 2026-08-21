@@ -16,10 +16,9 @@
 .page-trainings  { --hero-bg: url("training.jpg"); }
 .page-teens      { --hero-bg: url("individual-hero.jpg"); }
 .page-lgbt       { --hero-bg: url("individual-hero.jpg"); }
-.page-focus      { --hero-bg: url("training.jpg"); }
 .page-teen-club  { --hero-bg: url("training.jpg"); }
-.page-psy-home   { --hero-bg: url("training.jpg"); }
-/* .page-sexology — успадковує тематичний фон головної (світла/темна тема) */
+/* .page-sexology, .page-focus, .page-psy-home — успадковують тематичний фон головної
+   (на мобільних .page-focus і .page-psy-home показують власні лого — див. медіазапит нижче) */
 
 /* Мобільні: легші версії фонів (чому: економія трафіку на телефонах) */
 @media (max-width: 800px) {
@@ -30,9 +29,35 @@
   .page-trainings  { --hero-bg: url("training-sm.jpg"); }
   .page-teens      { --hero-bg: url("individual-hero-sm.jpg"); }
   .page-lgbt       { --hero-bg: url("individual-hero-sm.jpg"); }
-  .page-focus      { --hero-bg: url("training-sm.jpg"); }
+  .page-focus      { --hero-bg: url("focus-hero-sm.jpg"); }
   .page-teen-club  { --hero-bg: url("training-sm.jpg"); }
-  .page-psy-home   { --hero-bg: url("training-sm.jpg"); }
+  .page-psy-home   { --hero-bg: url("psy-home-hero-sm.jpg"); }
+}
+
+/* WebP там, де браузер його розуміє (−55…60% ваги).
+   Старі браузери не проходять @supports і лишаються на JPEG вище. */
+@supports (background-image: image-set(url("x.webp") type("image/webp"))) {
+  :root { --hero-bg: image-set(url("hero.webp") type("image/webp"), url("hero.jpg") type("image/jpeg")); }
+  html.theme-dark { --hero-bg: image-set(url("herodark.webp") type("image/webp"), url("herodark.jpg") type("image/jpeg")); }
+  .page-individual { --hero-bg: image-set(url("individual-hero.webp") type("image/webp"), url("individual-hero.jpg") type("image/jpeg")); }
+  .page-family     { --hero-bg: image-set(url("herofamily.webp") type("image/webp"), url("herofamily.jpg") type("image/jpeg")); }
+  .page-trainings  { --hero-bg: image-set(url("training.webp") type("image/webp"), url("training.jpg") type("image/jpeg")); }
+  .page-teens      { --hero-bg: image-set(url("individual-hero.webp") type("image/webp"), url("individual-hero.jpg") type("image/jpeg")); }
+  .page-lgbt       { --hero-bg: image-set(url("individual-hero.webp") type("image/webp"), url("individual-hero.jpg") type("image/jpeg")); }
+  .page-teen-club  { --hero-bg: image-set(url("training.webp") type("image/webp"), url("training.jpg") type("image/jpeg")); }
+
+  @media (max-width: 800px) {
+    :root { --hero-bg: image-set(url("hero-sm.webp") type("image/webp"), url("hero-sm.jpg") type("image/jpeg")); }
+    html.theme-dark { --hero-bg: image-set(url("herodark-sm.webp") type("image/webp"), url("herodark-sm.jpg") type("image/jpeg")); }
+    .page-focus    { --hero-bg: image-set(url("focus-hero-sm.webp") type("image/webp"), url("focus-hero-sm.jpg") type("image/jpeg")); }
+    .page-psy-home { --hero-bg: image-set(url("psy-home-hero-sm.webp") type("image/webp"), url("psy-home-hero-sm.jpg") type("image/jpeg")); }
+    .page-individual { --hero-bg: image-set(url("individual-hero-sm.webp") type("image/webp"), url("individual-hero-sm.jpg") type("image/jpeg")); }
+    .page-family     { --hero-bg: image-set(url("herofamily-sm.webp") type("image/webp"), url("herofamily-sm.jpg") type("image/jpeg")); }
+    .page-trainings  { --hero-bg: image-set(url("training-sm.webp") type("image/webp"), url("training-sm.jpg") type("image/jpeg")); }
+    .page-teens      { --hero-bg: image-set(url("individual-hero-sm.webp") type("image/webp"), url("individual-hero-sm.jpg") type("image/jpeg")); }
+    .page-lgbt       { --hero-bg: image-set(url("individual-hero-sm.webp") type("image/webp"), url("individual-hero-sm.jpg") type("image/jpeg")); }
+    .page-teen-club  { --hero-bg: image-set(url("training-sm.webp") type("image/webp"), url("training-sm.jpg") type("image/jpeg")); }
+  }
 }
  
  
@@ -95,6 +120,48 @@ body {
 .hero-content{
   position: relative;
   z-index: 2; /* поверх затемнення */
+}
+
+/* Логотипні герої (Дім психолога, Фокус) — тільки на мобільних:
+   лого показуємо повністю у верхній частині, текст — одразу під ним */
+@media (max-width: 800px) {
+  .page-psy-home .hero,
+  .page-focus    .hero{
+    --logo-top: clamp(40px, 6vh, 72px);
+    --logo-h: 44svh;
+    --logo-trim: 4svh;          /* скільки «порожніх» полів картинки підрізати під текст */
+    align-items: flex-start;
+    /* висота — за вмістом, щоб під кнопкою не лишалося порожнього екрана */
+    min-height: 0;
+    height: auto;
+    /* текст стартує одразу під лого (−4svh — компенсація полів усередині картинки) */
+    padding-top: calc(var(--logo-top) + var(--logo-h) - var(--logo-trim));
+    padding-bottom: clamp(32px, 6vh, 64px);
+  }
+  .page-psy-home .hero{ background-color: #0b1110; }
+  .page-focus    .hero{ background-color: #0a1911; --logo-trim: 8svh; } /* у «Фокуса» більше порожнього поля знизу */
+
+  .page-psy-home .hero::before,
+  .page-focus    .hero::before{
+    inset: auto;
+    top: var(--logo-top);
+    left: 50%;
+    transform: translateX(-50%);
+    height: var(--logo-h);
+    aspect-ratio: 1 / 1;                        /* квадрат під лого */
+    max-width: 92vw;
+    background-color: transparent;
+    background-size: contain;
+    background-position: center;
+    background-attachment: scroll;
+    /* м’яко розчиняємо квадратний край картинки у фоні */
+    -webkit-mask-image: radial-gradient(circle closest-side at 50% 50%, #000 80%, transparent 100%);
+            mask-image: radial-gradient(circle closest-side at 50% 50%, #000 80%, transparent 100%);
+  }
+
+  /* лого і так на темному тлі — сильне затемнення не потрібне */
+  .page-psy-home .hero::after,
+  .page-focus    .hero::after{ background: rgba(0,0,0,0.25); }
 }
 
 /* Паралакс тільки на десктопі — на мобільному НЕ fixed */
@@ -741,6 +808,7 @@ footer {
     opacity: 1;
 }
 /* Мініатюри */
+.swiper-slide picture { display: block; }
 .cert-thumb {
   width: 100%;
   border-radius: 12px;

@@ -70,7 +70,8 @@
         var sm = matchMedia('(max-width: 800px)').matches;
         var l = document.createElement('link');
         l.rel = 'preload'; l.as = 'image';
-        l.href = '/' + (dark ? 'herodark' : 'hero') + (sm ? '-sm' : '') + '.jpg';
+        var ext = (window.CSS && CSS.supports && CSS.supports('background-image', 'image-set(url("a.webp") type("image/webp"))')) ? '.webp' : '.jpg';
+        l.href = '/' + (dark ? 'herodark' : 'hero') + (sm ? '-sm' : '') + ext;
         l.fetchPriority = 'high';
         document.head.appendChild(l);
       } catch (e) {}
@@ -118,8 +119,11 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-content reveal">
-      <img src="profile-2025-sm.jpg" alt="Психолог в Ужгороді — Марина Чернят’єва" class="profile-pic" width="190"
-        height="190" fetchpriority="high" decoding="async">
+      <picture>
+        <source srcset="profile-2025-sm.webp" type="image/webp">
+        <img src="profile-2025-sm.jpg" alt="Психолог в Ужгороді — Марина Чернят’єва" class="profile-pic" width="190"
+          height="190" fetchpriority="high" decoding="async">
+      </picture>
       <h1>Психолог Марина Чернят’єва</h1>
       <p class="subtitle">Психолог в Ужгороді · онлайн та офлайн</p>
 
@@ -137,9 +141,9 @@
   <section id="about" class="smooth reveal">
     <h2>Про мене</h2>
     <div class="about-box smooth">
-      <p class="lead">Мене звати <strong>Марина Чернятʼєва</strong>. Я практикуючий психолог (магістр психології), клінічний психолог, сексолог,  автор навчальних курсів і тренінгів. Працюю з дорослими, підлітками, парами та сім’ями, консультую з питань емоційного стану, самооцінки, тривожності, особистісних криз, стосунків, сексуальності та інтимної сфери. Окремі напрями моєї роботи - профорієнтація для підлітків, психологічна підтримка LGBT людей та професійний розвиток психологів-початківців у межах мого авторського проєкту «Дім психолога». У своїй роботі використовую інтегративний підхід, поєднуючи інструменти КПТ, схема-терапії, ACT  та інших сучасних психотерапевтичних напрямів..</p>
+      <p class="lead">Мене звати <strong>Марина Чернятʼєва</strong>. Я практикуючий психолог ( магістр психології ) , клінічний психолог, сексолог,  автор навчальних курсів і тренінгів. Працюю з дорослими, підлітками, парами та сім’ями, психологічна підтримка LGBT людей, консультую з питань емоційного стану, самооцінки, тривожності, особистісних криз, стосунків, інтимної сфери та багато інших . Окремі напрями моєї роботи - програма профорієнтації та просвітницький клуб  для підлітків та авторський інтенсив  професійний розвиток «Від диплома - до приватної практики» для  психологів-початківців та студентів психологів  у межах мого авторського проєкту «Дім психолога». У своїй роботі використовую інтегративний підхід, поєднуючи інструменти КПТ, схема-терапії, ACT  та інших сучасних психотерапевтичних напрямів.</p>
       <p>Психологія для мене -  не просто професія. Це спосіб дивитися на людину глибше: за її словами, реакціями, звичками та навіть тим, що вона сама про себе ще не встигла зрозуміти.</p>
-      <p> Я досліджую, як формується наша особистість, звідки беруться внутрішні конфлікти, чому ми повторюємо одні й ті самі сценарії у стосунках, як тіло реагує на переживання і, найважливіше, як людина може змінити те, що колись здавалося незмінним. 
+      <p> Як формується наша особистість, звідки беруться внутрішні конфлікти, чому ми повторюємо одні й ті самі сценарії у стосунках, як тіло реагує на переживання і, найважливіше, як людина може змінити те, що колись здавалося незмінним. 
 </p>
 <p>Я з тих психологів, які постійно навчаються. Для мене професійність -  це не статус, який одного разу отримуєш разом із дипломом, а постійний процес розвитку, поглиблення знань, супервізії та переосмислення власної практики. Мені важливо працювати сучасно, етично й дуже бережно до внутрішнього світу людини.</p>
 <p>Моє покликання -  бути поруч у моменти, коли особливо потрібна опора у найскладніші моменти життя людини. Допомагати проходити кризи, краще розуміти свої почуття й потреби, відновлювати самоцінність, будувати близькі та здорові стосунки, повертати внутрішню рівновагу та звільнятися від того, що більше не дає жити вільно.</p>
@@ -216,8 +220,8 @@
             <li>Маючи професійну підготовку, практичний досвід та широкий інструментарій сучасної психології, я підбираю підхід відповідно до Ващої ситуації та запиту. Ми не просто говоримо про проблему — разом намагаємося зрозуміти її причини, закономірності та знайти шляхи змін.</li>
             <h3 class="faq-subtitle">Розуміння та прийняття:</h3>
             <li>Ви -  не просто Ваш запит чи питання, з яким Ви приходите на консультацію. Ви - унікальна людина зі своєю історією, досвідом, почуттями та внутрішнім світом.</li>
-            <li>Мені важливо побачити саме Вас - почути те, що іноді складно сказати вголос, зрозуміти те, що стоїть за Вашими словами, і бути поруч без осуду та оцінювання.</li>
-            <li>У моєму кабінеті Вам не потрібно вдавати, що все добре. Тут можна бути справжньою. І я хочу, щоб у процесі нашої роботи Ви відчули: Вас чують, Вас розуміють і Вам не потрібно змінювати себе, щоб бути достатньо цінною.</li>
+            <p>Мені важливо побачити саме Вас - почути те, що іноді складно сказати вголос, зрозуміти те, що стоїть за Вашими словами, і бути поруч без осуду та оцінювання.</p>
+            <p>У моєму кабінеті Вам не потрібно вдавати, що все добре. Тут можна бути справжньою. І я хочу, щоб у процесі нашої роботи Ви відчули: Вас чують, Вас розуміють і Вам не потрібно змінювати себе, щоб бути достатньо цінною.</p>
             
           </ul>
         </div>
@@ -317,6 +321,17 @@
           <p>У будь-якому зручному для Вас месенджері: Telegram, Google Meet, Viber, WhatsApp, Zoom та інших.</p>
         </div>
       </details>
+
+      <details class="faq-item">
+        <summary>Чи можливо придбати пакетом консультації?</summary>
+        <div class="faq-body">
+          <p>Так, можна. Я працюю і з пакетним форматом консультацій - 5 / 10 зустрічей.
+
+Пакет зручний, якщо ви налаштовані на системну роботу, адже ми можемо послідовно рухатися до вашого запиту, відстежувати зміни та коригувати роботу в процесі.
+
+Актуальну вартість пакетів уточнюйте за телефоном вказаним нижче.</p>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -326,18 +341,18 @@
     <h2>Сертифікати</h2>
     <div class="swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="/cert/thumbs/cert1.jpg" data-large="/cert/cert1.jpg" alt="Диплом магістра психології Марина Чернятʼєва" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert2.jpg" data-large="/cert/cert2.JPG" alt="Сертифікат клінічного психолога в Україні" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert3.jpg" data-large="/cert/cert3.JPG" alt="Сертифікат психолога  в Україні" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert4.jpg" data-large="/cert/cert4.JPG" alt="Сертифікат психолога першої клінічної допомоги" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert5.jpg" data-large="/cert/cert5.JPG" alt="Сертифікат сімейного психолога" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert6.jpg" data-large="/cert/cert6.jpg" alt="Сімейний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert7.jpg" data-large="/cert/cert7.jpg" alt="Сексолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert8.jpg" data-large="/cert/cert8.jpg" alt="Психосоматика — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert9.jpg" data-large="/cert/cert9.jpg" alt="Практичний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert10.jpg" data-large="/cert/cert10.JPG" alt="Сертифікат Когнітивно-поведінкова терапія" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert11.jpg" data-large="/cert/cert11.JPG" alt="Сертифікат психолога в Ужгороді" class="cert-thumb" loading="lazy" decoding="async"></div>
-        <div class="swiper-slide"><img src="/cert/thumbs/cert12.jpg" data-large="/cert/cert12.JPG" alt="Сертифікат пропадевтика психічних розладів" class="cert-thumb" loading="lazy" decoding="async"></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert1.webp" type="image/webp"><img src="/cert/thumbs/cert1.jpg" data-large="/cert/cert1.jpg" data-large-webp="/cert/cert1.webp" alt="Диплом магістра психології Марина Чернятʼєва" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert2.webp" type="image/webp"><img src="/cert/thumbs/cert2.jpg" data-large="/cert/cert2.JPG" data-large-webp="/cert/cert2.webp" alt="Сертифікат клінічного психолога в Україні" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert3.webp" type="image/webp"><img src="/cert/thumbs/cert3.jpg" data-large="/cert/cert3.JPG" data-large-webp="/cert/cert3.webp" alt="Сертифікат психолога  в Україні" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert4.webp" type="image/webp"><img src="/cert/thumbs/cert4.jpg" data-large="/cert/cert4.JPG" data-large-webp="/cert/cert4.webp" alt="Сертифікат психолога першої клінічної допомоги" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert5.webp" type="image/webp"><img src="/cert/thumbs/cert5.jpg" data-large="/cert/cert5.JPG" data-large-webp="/cert/cert5.webp" alt="Сертифікат сімейного психолога" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert6.webp" type="image/webp"><img src="/cert/thumbs/cert6.jpg" data-large="/cert/cert6.jpg" data-large-webp="/cert/cert6.webp" alt="Сімейний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert7.webp" type="image/webp"><img src="/cert/thumbs/cert7.jpg" data-large="/cert/cert7.jpg" data-large-webp="/cert/cert7.webp" alt="Сексолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert8.webp" type="image/webp"><img src="/cert/thumbs/cert8.jpg" data-large="/cert/cert8.jpg" data-large-webp="/cert/cert8.webp" alt="Психосоматика — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert9.webp" type="image/webp"><img src="/cert/thumbs/cert9.jpg" data-large="/cert/cert9.jpg" data-large-webp="/cert/cert9.webp" alt="Практичний психолог в Ужгороді — сертифікат" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert10.webp" type="image/webp"><img src="/cert/thumbs/cert10.jpg" data-large="/cert/cert10.JPG" data-large-webp="/cert/cert10.webp" alt="Сертифікат Когнітивно-поведінкова терапія" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert11.webp" type="image/webp"><img src="/cert/thumbs/cert11.jpg" data-large="/cert/cert11.JPG" data-large-webp="/cert/cert11.webp" alt="Сертифікат психолога в Ужгороді" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
+        <div class="swiper-slide"><picture><source srcset="/cert/thumbs/cert12.webp" type="image/webp"><img src="/cert/thumbs/cert12.jpg" data-large="/cert/cert12.JPG" data-large-webp="/cert/cert12.webp" alt="Сертифікат пропадевтика психічних розладів" class="cert-thumb" loading="lazy" decoding="async"></picture></div>
       </div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>

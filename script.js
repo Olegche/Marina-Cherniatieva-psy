@@ -94,7 +94,10 @@
         lightboxEl.style.display = 'flex';
         lightboxEl.classList.add('open');
 
-        lightboxImg.src = img.getAttribute('data-large') || img.getAttribute('src') || '';
+        var webpOK = !!(window.CSS && CSS.supports &&
+          CSS.supports('background-image', 'image-set(url("a.webp") type("image/webp"))'));
+        lightboxImg.src = (webpOK && img.getAttribute('data-large-webp'))
+          || img.getAttribute('data-large') || img.getAttribute('src') || '';
         lightboxImg.alt = img.getAttribute('alt') || '';
         document.body.style.overflow = 'hidden'; // чому: блокуємо скрол позаду
 
