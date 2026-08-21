@@ -560,6 +560,9 @@ section p.lead {
     font-weight: 700;
     color: var(--text);
     list-style: none;
+    /* чому: місце під «+», щоб довгий заголовок не наїжджав на маркер */
+    position: relative;
+    padding-right: 28px;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -568,7 +571,12 @@ section p.lead {
 
 .faq-item summary::after {
     content: "+";
-    float: right;
+    /* чому: float «падав» під останній рядок, коли заголовок переносився
+       на мобільних — маркер з'їжджав вниз за межі секції */
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: inherit;
     color: var(--mint);
     font-weight: 700;
 }
