@@ -716,8 +716,9 @@ footer {
 /* Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all .8s ease
+    transform: translateY(24px);
+    /* чому: анімуємо лише opacity/transform — 'all' зайве навантажує композитор */
+    transition: opacity .5s ease, transform .5s ease;
 }
 
 .reveal.visible {
@@ -786,7 +787,9 @@ footer {
   position: fixed; top:0; left:0; right:0; height:60px;
   display:flex; align-items:center; justify-content:space-between;
   padding: 0 16px; z-index:9998;
-  color:#fff; background: rgba(0,0,0,0.35); backdrop-filter: saturate(120%) blur(6px);
+  color:#fff; background: rgba(0,0,0,0.35);
+  -webkit-backdrop-filter: saturate(120%) blur(6px);
+  backdrop-filter: saturate(120%) blur(6px);
 }
 .nav-brand{ color:#fff; text-decoration:none; font-weight:700; letter-spacing:.2px; }
 .burger{ width:40px; height:40px; border:0; background:transparent; cursor:pointer; display:grid; place-content:center; gap:5px; }
@@ -800,8 +803,12 @@ footer {
   list-style:none; margin:0; padding:12px 16px;
   position: fixed; top:60px; left:0; right:0;
   display:none; flex-direction:column; gap:12px;
-  background: rgba(0,0,0,0.35); color: #fff;
-  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  /* чому: напівпрозорий фон не давав читати пункти поверх контенту сторінки */
+  background: rgba(10,12,16,0.94); color: #fff;
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  backdrop-filter: saturate(140%) blur(16px);
+  border-top: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
   border-bottom-left-radius: 12px; border-bottom-right-radius: 12px;
 }
 .nav-links.open{ display:flex; }
@@ -809,7 +816,12 @@ footer {
 .nav-links .nav-cta{ align-self:center; }
 
 /* Backdrop behind mobile menu */
-.nav-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:9997; }
+.nav-backdrop{
+  position:fixed; inset:0; z-index:9997;
+  background:rgba(0,0,0,.62);
+  -webkit-backdrop-filter: blur(8px) saturate(90%);
+  backdrop-filter: blur(8px) saturate(90%);
+}
 
 /* Desktop layout */
 @media (min-width: 992px){
@@ -817,6 +829,8 @@ footer {
   .nav-links{
     position: static; display:flex !important; flex-direction:row; gap:20px;
     background: transparent; box-shadow:none; padding:0;
+    -webkit-backdrop-filter: none; backdrop-filter: none;
+    border-top: 0;
   }
   .nav-links a{ color:#fff; }
 }
@@ -956,8 +970,9 @@ body.theme-transition .hero::after {
 .card.reveal,
 .swiper-slide.reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 1.5s ease;
+  transform: translateY(24px);
+  /* чому: 1.5s сприймалось як «підвисання» контенту при скролі */
+  transition: opacity .5s ease, transform .5s ease;
 }
 
 .about-box.reveal.visible,
@@ -981,3 +996,26 @@ body.theme-transition .hero::after {
 }
 
 /* щоби ще м’якше під час перемикача */
+
+/* Reveal: вимикаємо анімацію для тих, хто просив менше руху */
+@media (prefers-reduced-motion: reduce) {
+  .about-box.reveal,
+  .work-card.reveal,
+  .reveal,
+  .card.reveal,
+  .swiper-slide.reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Страховка: якщо JS не завантажився, контент усе одно видно */
+html.no-js .reveal,
+html.no-js .card.reveal,
+html.no-js .about-box.reveal,
+html.no-js .work-card.reveal,
+html.no-js .swiper-slide.reveal {
+  opacity: 1;
+  transform: none;
+}
