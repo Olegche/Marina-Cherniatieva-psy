@@ -182,7 +182,27 @@
       });
     }
 
-    // 7) FAQ accordion: only one open at a time
+    // 7) "Про мене": читати повністю / згорнути
+    const aboutToggle = document.getElementById('about-toggle');
+    const aboutMore = document.getElementById('about-more');
+    if (aboutToggle && aboutMore) {
+      const aboutBox = aboutToggle.closest('.about-box');
+      const setAboutOpen = (open) => {
+        aboutMore.hidden = !open;
+        aboutToggle.setAttribute('aria-expanded', String(open));
+        aboutToggle.textContent = open ? 'Згорнути' : 'Читати повністю';
+        aboutBox?.classList.toggle('collapsed', !open);
+      };
+      setAboutOpen(false);
+      aboutToggle.addEventListener('click', () => {
+        const open = aboutMore.hidden;
+        setAboutOpen(open);
+        // чому: після згортання сторінка різко коротшає — повертаємо початок блоку у видиму зону
+        if (!open) aboutBox?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    // 8) FAQ accordion: only one open at a time
     const faqItems = document.querySelectorAll('#faq .faq-item');
     if (faqItems.length) {
       faqItems.forEach((item) => {

@@ -282,6 +282,41 @@ body {
     /* гарна читабельність */
 }
 
+/* Згорнутий текст "Про мене" */
+.about-box .about-more[hidden] {
+    display: none;
+}
+
+/* три крапки після першого абзацу, поки текст згорнуто */
+.about-box.collapsed > .lead:first-child::after {
+    content: " …";
+}
+
+.about-toggle {
+    display: inline-block;
+    margin: 14px 0 6px;
+    padding: 10px 22px;
+    background: transparent;
+    color: #065f54;
+    border: 1.5px solid var(--mint);
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+}
+
+.about-toggle:hover,
+.about-toggle:focus-visible {
+    background: var(--mint);
+    color: #fff;
+    outline: none;
+}
+
+html.theme-dark .about-toggle {
+    color: #a7fff1;
+}
+
 /* легкий ховер (на desktop) */
 @media (hover:hover) {
     .about-box:hover {
@@ -704,18 +739,31 @@ html.theme-dark #faq .prep-intro {
 
 /* Contacts */
 
+/* Mobile: дві колонки замість довгого стовпчика */
 .contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    align-items: stretch;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* довгі кнопки (Google Maps) та остання при непарній кількості — на всю ширину */
+.contacts .contact-link--wide,
+.contacts .contact-link:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
 .contact-link {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 22px;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 14px;
+    font-size: 15px;
+    min-width: 0;
+    text-align: center;
     background: var(--mint-soft);
     border-radius: 999px;
     color: #065f54;
@@ -727,6 +775,14 @@ html.theme-dark #faq .prep-intro {
 .contact-link:hover {
     background: var(--mint);
     color: white
+}
+
+/* дуже вузькі екрани: трохи менший шрифт, щоб підписи не переносились */
+@media (max-width: 340px) {
+    .contact-link {
+        font-size: 14px;
+        padding: 11px 8px;
+    }
 }
 
 /* Desktop: контакти в один ряд, без розтягування кнопок */
@@ -744,6 +800,10 @@ html.theme-dark #faq .prep-intro {
         width: 100%;
     }
 
+    #contact .contacts {
+        max-width: none;
+    }
+
     #contact .contact-link {
         display: inline-flex;
         /* природна ширина */
@@ -754,6 +814,9 @@ html.theme-dark #faq .prep-intro {
         /* прибери будь-який min-width, якщо десь додавали */
         min-width: unset;
         justify-content: center;
+        padding: 14px 22px;
+        font-size: inherit;
+        gap: 10px;
     }
 }
 

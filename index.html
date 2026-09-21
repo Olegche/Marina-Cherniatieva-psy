@@ -82,10 +82,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=8" />
+  <link rel="stylesheet" href="/style.css?v=9" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-  <script src="script.js?v=5" defer></script>
+  <script src="script.js?v=6" defer></script>
 </head>
 
 <body>
@@ -140,8 +140,9 @@
   <!-- Про мене -->
   <section id="about" class="smooth reveal">
     <h2>Про мене</h2>
-    <div class="about-box smooth">
+    <div class="about-box smooth collapsed">
       <p class="lead">Мене звати <strong>Марина Чернятʼєва</strong>. Я практикуючий психолог ( магістр психології ) , клінічний психолог, сексолог,  автор навчальних курсів і тренінгів. Працюю з дорослими, підлітками, парами та сім’ями, психологічна підтримка LGBT людей, консультую з питань емоційного стану, самооцінки, тривожності, особистісних криз, стосунків, інтимної сфери та багато інших . Окремі напрями моєї роботи - програма профорієнтації та просвітницький клуб  для підлітків та авторський інтенсив  професійний розвиток «Від диплома - до приватної практики» для  психологів-початківців та студентів психологів  у межах мого авторського проєкту «Дім психолога». У своїй роботі використовую інтегративний підхід, поєднуючи інструменти КПТ, схема-терапії, ACT  та інших сучасних психотерапевтичних напрямів.</p>
+      <div class="about-more" id="about-more" hidden>
       <p>Психологія для мене -  не просто професія. Це спосіб дивитися на людину глибше: за її словами, реакціями, звичками та навіть тим, що вона сама про себе ще не встигла зрозуміти.</p>
       <p> Як формується наша особистість, звідки беруться внутрішні конфлікти, чому ми повторюємо одні й ті самі сценарії у стосунках, як тіло реагує на переживання і, найважливіше, як людина може змінити те, що колись здавалося незмінним. 
 </p>
@@ -151,6 +152,8 @@
 <p>Запрошую у простір, де можна бути собою - без необхідності здаватися сильнішою/им, ніж Ви є. Де ваші почуття мають значення, Ваша історія особлива. 
 Професійно, делікатно з повагою та турботою.</p>
 <p>Консультую онлайн з будь-якої точки світу, або офлайн в місті Ужгород. </p>
+      </div>
+      <button type="button" class="about-toggle" id="about-toggle" aria-expanded="false" aria-controls="about-more">Читати повністю</button>
       <p class="lead">Якщо ви в пошуках свого особистого спеціаліста — <strong>я поруч!</strong><br> 📩 Для запису
         пишіть у ( Viber, Telegram, WhatsApp) <br> <a class="tel-number" href="tel:+380994380991">+38 (099) 438
           09 91</a></p>
@@ -390,8 +393,12 @@
           <path
             d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692V11.05h3.128V8.413c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.656h-3.12V24h6.116c.73 0 1.326-.597 1.326-1.326V1.326C24 .597 23.403 0 22.675 0z" />
         </svg> Facebook</a>
-      <!-- Email -->
-      <a class="contact-link"
+   
+      <a class="contact-link contact-link--wide" target="_blank" href="https://share.google/ApUfKddZdaviht36u">
+        📍 Відкрити в Google Maps
+      </a>
+   <!-- Email -->
+      <a class="contact-link contact-link--wide"
         href="mailto:m.cherniatieva@gmail.com?subject=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%20%D0%BD%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D1%96%D1%8E">
         <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path fill="currentColor"
@@ -399,10 +406,6 @@
         </svg>
         Email
       </a>
-      <a class="contact-link" target="_blank" href="https://share.google/ApUfKddZdaviht36u">
-        📍 Відкрити в Google Maps
-      </a>
-
     </div>
     <div class="map-embed" aria-label="Мапа розташування: Ужгород, Минайська 16">
       <iframe
