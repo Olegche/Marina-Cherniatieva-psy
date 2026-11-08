@@ -393,39 +393,133 @@ section p.lead {
     transition: transform .12s ease;
 }
 
-@media (hover: hover) {
-    .service-card:hover {
-        background: #14181f;
-        color: #e6e8eb;
-        transform: translateY(-6px);
+/* Картки послуг — «матове скло»: крізь них трохи видно живий фон (зорі / конюшину) */
+.card.service-card {
+    background: rgba(255, 255, 255, .68);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, .6);
+}
+/* темна тема: без розмиття (чому: blur «з'їдає» дрібні зірки) і прозоріше */
+html.theme-dark .card.service-card {
+    background: rgba(20, 24, 31, .42);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: rgba(255, 255, 255, .08);
+}
+/* чому: на телефонах розмиття поверх анімованого canvas може гальмувати — лише прозорість */
+@media (max-width: 800px) {
+    .card.service-card {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        background: rgba(255, 255, 255, .8);
     }
+    html.theme-dark .card.service-card { background: rgba(20, 24, 31, .55); }
+}
+
+/* Hover картки послуги: замість різкої зміни кольору — плавний золотий контур із блиском */
+@property --glint-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
 }
 
 @media (hover: hover) {
-    html.theme-dark .service-card:hover {
-        background: #ffffff;
-        color: #0e1014;
+    /* чому: .card.reveal нижче перебиває transition — тут специфічніше селектор */
+    .card.service-card,
+    .card.reveal.service-card {
+        transition:
+            opacity .5s ease,
+            transform .45s cubic-bezier(.2, .7, .2, 1),
+            box-shadow .45s ease;
+    }
+
+    .card.service-card:hover {
         transform: translateY(-6px);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, .12);
+    }
+    html.theme-dark .card.service-card:hover {
+        box-shadow: 0 12px 28px rgba(0, 0, 0, .45);
+    }
+
+    /* Шар градієнта, у якого вирізано середину маскою. Видно лише «комету»:
+       яскрава голова і хвіст, що плавно розчиняється; решта контуру прозора */
+    .service-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 2.2px;
+        pointer-events: none;
+        background: conic-gradient(from var(--glint-angle),
+            rgba(214, 166, 70, 0) 0%,
+            rgba(214, 166, 70, 0) 55%,     /* решта контуру — прозора */
+            rgba(222, 180, 90, .25) 68%,   /* кінчик хвоста */
+            rgba(212, 160, 58, .6) 78%,
+            rgba(196, 142, 38, .9) 85%,
+            #b47e18 89%,                   /* голова */
+            rgba(180, 126, 24, 0) 90.5%,   /* різкий край попереду голови */
+            rgba(214, 166, 70, 0) 100%);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+        opacity: 0;
+        transition: opacity .55s ease;
+        animation: glint-spin 4.5s linear infinite;
+        animation-play-state: paused;
+    }
+
+    /* темна тема: приглушене золото, світла голова комети */
+    html.theme-dark .service-card::before {
+        background: conic-gradient(from var(--glint-angle),
+            rgba(200, 150, 50, 0) 0%,
+            rgba(200, 150, 50, 0) 55%,
+            rgba(200, 150, 50, .22) 68%,
+            rgba(225, 180, 85, .55) 78%,
+            rgba(246, 214, 130, .85) 85%,
+            #fff8e0 89%,                   /* голова */
+            rgba(255, 248, 224, 0) 90.5%,
+            rgba(200, 150, 50, 0) 100%);
+    }
+
+    .service-card:hover::before,
+    .service-card:focus-visible::before {
+        opacity: 1;
+        animation-play-state: running;
+    }
+}
+
+@keyframes glint-spin {
+    to { --glint-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* без руху комета не має сенсу — показуємо тихий суцільний золотий контур */
+    .service-card::before,
+    html.theme-dark .service-card::before {
+        animation: none;
+        background: rgba(212, 166, 70, .7);
     }
 }
 
 @media (hover: hover) {
     .service-card::after {
-        content: "";
+        content: "Детальніше...";
         display: block;
-        margin-top: 12px;
+        margin-top: 0;
         font-weight: 800;
         font-size: 14px;
         color: currentColor;
         opacity: 0;
         max-height: 0;
         overflow: hidden;
+        transition: opacity .45s ease, max-height .45s ease, margin-top .45s ease;
     }
 
     .service-card:hover::after {
-        content: "Детальніше...";
         opacity: 1;
         max-height: 40px;
+        margin-top: 12px;
     }
 }
 
@@ -1184,3 +1278,16 @@ html.no-js .swiper-slide.reveal {
   opacity: 1;
   transform: none;
 }
+
+/* Живий фон — canvas створює script.js: зорі в темній темі, конюшина в світлій */
+.starfield{
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;              /* під усім контентом, але над фоном body */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+.starfield.is-on{ opacity: 1; }
