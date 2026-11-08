@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="theme-color" content="#00d1b2" />
+  <meta name="theme-color" content="#0d1014" />
   <meta name="color-scheme" content="light dark">
 
   <title>Психологічна підтримка LGBT людей — Ужгород та онлайн | Марина Чернят’єва</title>
@@ -199,7 +199,7 @@
       try {
         document.documentElement.classList.remove('no-js');
         var saved = localStorage.getItem('theme');
-        var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+        var dark = saved ? saved === 'dark' : true; // за замовчуванням — темна тема
         if (dark) document.documentElement.classList.add('theme-dark');
         var sm = matchMedia('(max-width: 800px)').matches;
         var l = document.createElement('link');
@@ -215,8 +215,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=23" />
-  <script src="script.js?v=11" defer></script>
+  <link rel="stylesheet" href="/style.css?v=34" />
+  <script src="script.js?v=32" defer></script>
 </head>
 
 <body class="page-lgbt">

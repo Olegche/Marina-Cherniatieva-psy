@@ -464,6 +464,7 @@ html.theme-dark #about .hl {
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--about-serif);
+    font-style: italic;          /* підключено лише курсивне накреслення */
     font-size: 4.2em;
     line-height: 1;
     color: var(--about-gold);
@@ -580,29 +581,31 @@ section p.lead {
     transition: transform .12s ease;
 }
 
-/* Картки послуг — «матове скло»: крізь них трохи видно живий фон (зорі / конюшину) */
-.card.service-card {
+/* Картки в сітках (послуги, «З якими запитами», «Тематики» тощо) — «матове скло»:
+   крізь них трохи видно живий фон */
+.services > .card {
     background: rgba(255, 255, 255, .68);
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 255, 255, .6);
 }
-/* темна тема: без розмиття (чому: blur «з'їдає» дрібні зірки) і прозоріше */
-html.theme-dark .card.service-card {
-    background: rgba(20, 24, 31, .42);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+/* темна тема: те саме «матове скло» — елементи фону, що заходять за картку, м'яко розмиваються */
+html.theme-dark .services > .card {
+    background: rgba(20, 24, 31, .5);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
     border-color: rgba(255, 255, 255, .08);
 }
 /* чому: на телефонах розмиття поверх анімованого canvas може гальмувати — лише прозорість */
 @media (max-width: 800px) {
-    .card.service-card {
+    .services > .card {
         -webkit-backdrop-filter: none;
         backdrop-filter: none;
         background: rgba(255, 255, 255, .8);
     }
-    html.theme-dark .card.service-card { background: rgba(20, 24, 31, .55); }
+    html.theme-dark .services > .card { background: rgba(20, 24, 31, .55); }
 }
+
 
 /* Hover картки послуги: замість різкої зміни кольору — плавний золотий контур із блиском */
 @property --glint-angle {
@@ -1478,3 +1481,49 @@ html.no-js .swiper-slide.reveal {
   transition: opacity .7s ease;
 }
 .starfield.is-on{ opacity: 1; }
+
+/* ---------- Сторінки послуг: вступний текст так само читабельно й «преміально», як «Про мене» ----------
+   (body.page-* є лише на сторінках послуг; на головній клас відсутній) */
+body[class*="page-"] section > .about-box {
+    --svc-text: #33475b;
+    --svc-gold: #b0812a;
+    padding-block: clamp(26px, 4vw, 40px);
+}
+html.theme-dark body[class*="page-"] section > .about-box {
+    --svc-text: #d6dce2;
+    --svc-gold: #e2bd6a;
+}
+body[class*="page-"] section > .about-box > p {
+    max-width: 640px;   /* px, а не ch: у першого абзацу більший шрифт, а лівий край має збігатися */
+    margin: .8em auto 0;
+    text-align: left;
+    text-indent: 1.6em;
+    font-size: clamp(16px, 0.45vw + 13.5px, 18px);
+    line-height: 1.75;
+    color: var(--svc-text);
+    text-wrap: pretty;
+}
+
+/* перший абзац — вступ: трохи більший, без відступу, під ним золотий розділювач */
+body[class*="page-"] section > .about-box > p:first-child {
+    margin-top: 0;
+    text-indent: 0;
+    font-size: clamp(17px, 0.6vw + 14px, 20px);
+    line-height: 1.65;
+    color: var(--text);
+}
+body[class*="page-"] section > .about-box > p:first-child::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 9px;
+    margin: 1.1em auto .5em;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 0 8 4 4 8 0 4z' fill='%23b0812a'/%3E%3C/svg%3E") center / 8px 8px no-repeat,
+        linear-gradient(90deg, transparent, color-mix(in srgb, var(--svc-gold) 70%, transparent) 42%, transparent 42%, transparent 58%, color-mix(in srgb, var(--svc-gold) 70%, transparent) 58%, transparent) center / 100% 1px no-repeat;
+}
+html.theme-dark body[class*="page-"] section > .about-box > p:first-child::after {
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M4 0 8 4 4 8 0 4z' fill='%23e2bd6a'/%3E%3C/svg%3E") center / 8px 8px no-repeat,
+        linear-gradient(90deg, transparent, color-mix(in srgb, var(--svc-gold) 70%, transparent) 42%, transparent 42%, transparent 58%, color-mix(in srgb, var(--svc-gold) 70%, transparent) 58%, transparent) center / 100% 1px no-repeat;
+}
