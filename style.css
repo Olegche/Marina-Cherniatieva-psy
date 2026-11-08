@@ -288,7 +288,7 @@ body {
 }
 
 /* три крапки після першого абзацу, поки текст згорнуто */
-.about-box.collapsed > .lead:first-child::after {
+.about-box.collapsed > .about-intro::after {
     content: " …";
 }
 
@@ -323,7 +323,8 @@ html.theme-dark .about-toggle {
 #about .about-box { --about-text: #33475b; }
 html.theme-dark #about .about-box { --about-text: #d6dce2; }
 
-#about .about-box > .lead:first-child,
+#about .about-box > .about-hello,
+#about .about-box > .about-intro,
 #about .about-more {
     max-width: 66ch;
     margin-inline: auto;
@@ -331,7 +332,7 @@ html.theme-dark #about .about-box { --about-text: #d6dce2; }
     font-size: clamp(16px, 0.45vw + 13.5px, 18px);
 }
 
-#about .about-box > .lead:first-child,
+#about .about-box > .about-intro,
 #about .about-more p {
     line-height: 1.75;
     color: var(--about-text);
@@ -340,19 +341,168 @@ html.theme-dark #about .about-box { --about-text: #d6dce2; }
 
 #about .about-more { overflow: hidden; } /* для плавного розгортання */
 #about .about-more p { margin: 1em 0 0; font-size: 1em; }
-#about .about-more > p:first-child { margin-top: 0; } /* продовження першого абзацу — без розриву */
+#about .about-more > p:first-child { margin-top: 1em; }
 
-/* ключова фраза — тихий акцент посеред тексту */
-#about .about-more .about-quote {
-    margin: 1.5em 0;
-    padding: .15em 0 .15em 1.1em;
-    border-left: 3px solid var(--mint);
-    font-style: italic;
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #1f6f63;
+/* Абзацні відступи («червоний рядок») для основного тексту */
+#about .about-box > .about-intro,
+#about .about-more > p {
+    text-indent: 1.6em;
 }
-html.theme-dark #about .about-more .about-quote { color: #a7f0e2; }
+#about .about-hello,                       /* вступний рядок «Мене звати…» — без відступу */
+#about .about-more > .about-badge,
+#about .about-more > .about-tagline,
+#about .about-more > .about-where,
+#about .about-more .about-quote p {
+    text-indent: 0;
+}
+#about .about-more > p { margin-top: .8em; }
+
+/* ---------- «Про мене»: преміальні акценти ---------- */
+#about .about-box {
+    --about-gold: #b0812a;
+    --about-accent: #1f6f63;
+    --about-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+}
+html.theme-dark #about .about-box {
+    --about-gold: #e2bd6a;
+    --about-accent: #a7f0e2;
+}
+
+/* «Мене звати…» — окремий вступний рядок шрифтом із засічками */
+#about .about-box > .about-hello {
+    margin: 0 auto .6em;
+    text-align: center;
+}
+#about .about-hello span {
+    font-weight: 300;
+    font-size: 1.55em;
+    line-height: 1.25;
+    letter-spacing: -.005em;
+    color: var(--text);
+}
+#about .about-hello strong { color: var(--about-accent); font-weight: 600; }
+
+/* м'яке «маркерне» підкреслення ключових понять */
+#about .hl {
+    background: linear-gradient(transparent 60%, rgba(232, 188, 90, .38) 60%, rgba(232, 188, 90, .38) 92%, transparent 92%);
+    padding: 0 .08em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+html.theme-dark #about .hl {
+    background: linear-gradient(transparent 60%, rgba(226, 189, 106, .32) 60%, rgba(226, 189, 106, .32) 92%, transparent 92%);
+}
+
+/* членство в асоціації — акуратна «відзнака» */
+#about .about-more .about-badge {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: .55em;
+    margin-top: 1.1em;
+    padding: .45em 1em .45em .75em;
+    border: 1px solid color-mix(in srgb, var(--about-gold) 55%, transparent);
+    border-radius: 999px;
+    font-size: .9em;
+    line-height: 1.4;
+    color: var(--about-text);
+}
+#about .about-badge::before {
+    content: "";
+    flex: none;
+    width: 1.15em;
+    height: 1.15em;
+    background: var(--about-gold);
+    /* значок-печатка з галочкою */
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1l2.6 2.2 3.4-.4 1 3.3 3 1.6-1 3.3 1 3.3-3 1.6-1 3.3-3.4-.4L12 23l-2.6-2.2-3.4.4-1-3.3-3-1.6 1-3.3-1-3.3 3-1.6 1-3.3 3.4.4z M10.5 15.6l6.2-6.2-1.4-1.4-4.8 4.8-2.2-2.2-1.4 1.4z' fill-rule='evenodd'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1l2.6 2.2 3.4-.4 1 3.3 3 1.6-1 3.3 1 3.3-3 1.6-1 3.3-3.4-.4L12 23l-2.6-2.2-3.4.4-1-3.3-3-1.6 1-3.3-1-3.3 3-1.6 1-3.3 3.4.4z M10.5 15.6l6.2-6.2-1.4-1.4-4.8 4.8-2.2-2.2-1.4 1.4z' fill-rule='evenodd'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* розділювач між «фаховою» та особистою частинами: тонкі лінії й золотий ромбик */
+#about .about-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 2.2em auto 1.9em;
+    max-width: 240px;
+}
+#about .about-divider::before,
+#about .about-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--about-gold) 70%, transparent));
+}
+#about .about-divider::after { transform: scaleX(-1); }
+#about .about-divider span {
+    width: 7px;
+    height: 7px;
+    background: var(--about-gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--about-gold) 60%, transparent);
+}
+
+/* перше речення особистої частини — вступ */
+#about .lead-in {
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* цитата — центральний акцент: засічки, курсив, золота лапка */
+#about .about-more .about-quote {
+    position: relative;
+    margin: 2.2em auto;
+    padding: 1.4em 1em .2em;
+    max-width: 30em;
+    text-align: center;
+    border: 0;
+}
+#about .about-more .about-quote::before {
+    content: "“";
+    position: absolute;
+    top: -.12em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--about-serif);
+    font-size: 4.2em;
+    line-height: 1;
+    color: var(--about-gold);
+    opacity: .85;
+}
+#about .about-more .about-quote p {
+    margin: 0;
+    font-family: var(--about-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.5em;
+    line-height: 1.35;
+    color: var(--about-accent);
+    text-wrap: balance;
+}
+
+/* фінальний підсумок — розрідженими капітелями */
+#about .about-more .about-tagline {
+    margin-top: 1.6em;
+    text-align: center;
+    font-size: .8em;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--about-gold);
+}
+#about .about-more .about-where {
+    margin-top: .5em;
+    margin-bottom: .8em;
+    text-align: center;
+    font-size: .92em;
+    opacity: .8;
+}
+
+@media (max-width: 600px) {
+    #about .about-hello span { font-size: 1.4em; }
+    #about .about-more .about-quote p { font-size: 1.32em; }
+    #about .about-more .about-tagline { letter-spacing: .1em; }
+}
 
 /* легкий ховер (на desktop) */
 @media (hover:hover) {
