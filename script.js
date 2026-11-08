@@ -187,16 +187,32 @@
     const aboutMore = document.getElementById('about-more');
     if (aboutToggle && aboutMore) {
       const aboutBox = aboutToggle.closest('.about-box');
-      const setAboutOpen = (open) => {
-        aboutMore.hidden = !open;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let aboutAnim = null;
+      const setAboutOpen = (open, animate = false) => {
         aboutToggle.setAttribute('aria-expanded', String(open));
         aboutToggle.textContent = open ? 'Згорнути' : 'Читати повністю';
         aboutBox?.classList.toggle('collapsed', !open);
+        aboutAnim?.cancel();
+        if (!animate || reduceMotion.matches || !aboutMore.animate) {
+          aboutMore.hidden = !open;
+          return;
+        }
+        // плавне розгортання/згортання: висота + проява тексту
+        aboutMore.hidden = false;
+        const h = aboutMore.scrollHeight;
+        aboutAnim = aboutMore.animate(
+          open
+            ? [{ height: '0px', opacity: 0 }, { height: h + 'px', opacity: 1 }]
+            : [{ height: h + 'px', opacity: 1 }, { height: '0px', opacity: 0 }],
+          { duration: open ? 480 : 360, easing: 'cubic-bezier(.2,.7,.2,1)' }
+        );
+        aboutAnim.onfinish = () => { aboutAnim = null; if (!open) aboutMore.hidden = true; };
       };
       setAboutOpen(false);
       aboutToggle.addEventListener('click', () => {
-        const open = aboutMore.hidden;
-        setAboutOpen(open);
+        const open = aboutToggle.getAttribute('aria-expanded') !== 'true';
+        setAboutOpen(open, true);
         // чому: після згортання сторінка різко коротшає — повертаємо початок блоку у видиму зону
         if (!open) aboutBox?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });

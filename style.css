@@ -317,6 +317,43 @@ html.theme-dark .about-toggle {
     color: #a7fff1;
 }
 
+/* «Про мене» — читабельна типографіка розгорнутого тексту.
+   чому: рядки по 110+ символів і центрування втомлювали очі;
+   65–70 знаків у рядку й вирівнювання ліворуч — комфортна норма для довгого тексту */
+#about .about-box { --about-text: #33475b; }
+html.theme-dark #about .about-box { --about-text: #d6dce2; }
+
+#about .about-box > .lead:first-child,
+#about .about-more {
+    max-width: 66ch;
+    margin-inline: auto;
+    text-align: left;
+    font-size: clamp(16px, 0.45vw + 13.5px, 18px);
+}
+
+#about .about-box > .lead:first-child,
+#about .about-more p {
+    line-height: 1.75;
+    color: var(--about-text);
+    text-wrap: pretty;           /* без «висячих» слів у кінці абзацу */
+}
+
+#about .about-more { overflow: hidden; } /* для плавного розгортання */
+#about .about-more p { margin: 1em 0 0; font-size: 1em; }
+#about .about-more > p:first-child { margin-top: 0; } /* продовження першого абзацу — без розриву */
+
+/* ключова фраза — тихий акцент посеред тексту */
+#about .about-more .about-quote {
+    margin: 1.5em 0;
+    padding: .15em 0 .15em 1.1em;
+    border-left: 3px solid var(--mint);
+    font-style: italic;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #1f6f63;
+}
+html.theme-dark #about .about-more .about-quote { color: #a7f0e2; }
+
 /* легкий ховер (на desktop) */
 @media (hover:hover) {
     .about-box:hover {
